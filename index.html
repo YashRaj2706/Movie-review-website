@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Reviews</title>
+</head>
+<body>
+    <h1>Movie Review Website</h1>
+    
+    <form action="/" method="GET">
+        <input type="text" name="search" placeholder="Search movies...">
+        <button type="submit">Search</button>
+    </form>
+    <br>
+    <a href="/add_movie"><button> Add New Movie</button></a>
+    <hr>
+
+    <ul>
+        {% for movie in movies %}
+        <li>
+            <strong>{{ movie.title }}</strong> - 
+            <a href="/movie/{{ movie.id }}">View Reviews</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

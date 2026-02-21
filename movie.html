@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>{{ movie.title }}</h1>
+    <p>{{ movie.description }}</p>
+    <hr>
+
+    <h3>Reviews</h3>
+    {% for review in reviews %}
+        <div style="border-bottom: 1px solid #ccc; padding: 10px;">
+            <strong>Rating: {{ review.rating }}/5</strong>
+            <p>{{ review.content }}</p>
+            <a href="/edit_review/{{ review.id }}">Edit</a> | 
+            <a href="/delete_review/{{ review.id }}" onclick="return confirm('Delete this review?')">Delete</a>
+        </div>
+    {% endfor %}
+
+    <hr>
+    <h3>Review Movie</h3>
+    <form action="/movie/{{ movie.id }}/add_review" method="POST">
+        <label>Rating:</label>
+        <select name="rating">
+            <option value="5">5 - Excellent</option>
+            <option value="4">4 - Good</option>
+            <option value="3">3 - Average</option>
+            <option value="2">2 - Poor</option>
+            <option value="1">1 - Terrible</option>
+        </select><br><br>
+        <textarea name="content" placeholder="Write your thoughts..." required></textarea><br><br>
+        <button type="submit">Post Review</button>
+    </form>
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
