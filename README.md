@@ -43,7 +43,7 @@ m_review/
 │
 └── README.md
 
-# some screenshots of projectm
+# some screenshots of project
 
 
 
