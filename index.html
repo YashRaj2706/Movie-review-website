@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Reviews</title>
+</head>
+<body>
+    <h1>Movie Review Website</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+    
+    <form action="{{ url_for('index') }}" method="GET">
+        <input type="text" name="search" placeholder="Search movies...">
+        <button type="submit">Search</button>
+    </form>
+    <br>
+    <a href="/add_movie"><button> Add New Movie</button></a>
+    <hr>
+    <style>
+      .flash {
+        background: #ffe4e6;
+        color: #9f1239;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #fecdd3;
+      }
+    </style>
+
+    <ul>
+        {% for movie in movies %}
+        <li>
+            <strong>{{ movie.title }}</strong> - 
+            <a href="/movie/{{ movie.id }}">View Reviews</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
