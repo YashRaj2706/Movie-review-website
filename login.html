@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f6fc;
+        }
+        .login-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+            width: 100%;
+            max-width: 420px;
+        }
+        h1 {
+            margin: 0 0 1rem;
+            font-size: 1.9rem;
+            color: #102a43;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #334e68;
+            font-size: 0.95rem;
+        }
+        input {
+            width: 100%;
+            padding: 0.95rem 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #d9e2ec;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: #102a43;
+            background: #f8fafc;
+        }
+        button {
+            width: 100%;
+            padding: 0.95rem 1rem;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1d4ed8;
+        }
+        .flash {
+            margin-bottom: 1rem;
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            background: #ffe4e6;
+            color: #9f1239;
+            border: 1px solid #fecdd3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h1>User Login</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="post" action="{{ url_for('login') }}">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autocomplete="username" />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password" />
+
+            <button type="submit">Login</button>
+            <div class="footer-link">
+                <p>Not having account?Create account <a href="/register">register</a></p>
+        </form>
+    </div>
+</body>
+</html>
